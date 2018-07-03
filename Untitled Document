@@ -1,0 +1,19 @@
+0.  Share  github-  SQL  query  data  from  EAV  table
+            -    Query  all  product  name  for  store  English  level
+
+		SELECT value FROM `catalog_product_entity_varchar` AS A, 
+			(SELECT entity_id 
+			FROM `catalog_product_entity_varchar` 
+			WHERE attribute_id = 73 and store_id = 1) AS B 
+			WHERE attribute_id = 73 and store_id = 0 and A.entity_id <> B.entity_id 
+			UNION SELECT value 
+			FROM `catalog_product_entity_varchar` 
+			WHERE attribute_id = 73 and store_id = 1;
+
+            -    Query  all  customer  name,  customer  address 
+
+		SELECT CONCAT(Ce.firstname," ", Ce.lastname) AS fullname,
+			CONCAT(Ca.city," ",Ca.region) AS address 
+		FROM `customer_entity` Ce
+		LEFT JOIN  customer_address_entity Ca 
+		ON Ce.entity_id = Ca.parent_id;
