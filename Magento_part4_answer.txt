@@ -1,6 +1,21 @@
 1.  When/where  the  layout  loaded  and  parse  in  Magento?  
 
-	
+	Method: loadLayout(). Directory: ../dev/tests/integrattion/testsuite/Magento/Backend/Block/Widget/Grid/MassationTest.php
+
+	private function loadLayout($mageMode = State::MODE_DEVELOPER)
+    {
+        $this->objectManager->get(State::class)->setMode($mageMode);
+        $this->_layout = $this->objectManager->create(
+            \Magento\Framework\View\LayoutInterface::class,
+            ['area' => 'adminhtml']
+        );
+        $this->_layout->getUpdate()->load('layout_test_grid_handle');
+        $this->_layout->generateXml();
+        $this->_layout->generateElements();
+        $this->_block = $this->_layout->getBlock('admin.test.grid.massaction');
+        $this->assertNotFalse($this->_block, 'Could not load the block for testing');
+    }
+
 
 2.  How  do  Magento  locate  the  controller/action  to  be  excuted?
 	step1: create routes.xml in etc/frontend or etc/adminhtml folder (first one is for frontend and second one is for admin controller).
@@ -45,4 +60,4 @@
 		 
 9.  When  do  we  have  a  conflict  happen?  And  what  happen  when  we  have  a  conflict? 
 
-	Conflict xảy ra khi 2 hay nhiều module cùng override 1 class nào đó.
+	Conflict xảy ra khi 2 hay nhiều module cùng override 1 class nào đó. Khi đó chỉ 1 modelu đc chạy.
