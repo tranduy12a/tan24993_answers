@@ -1,0 +1,39 @@
+1.  How  to  join  tables  in  Magento  2?  
+	Step1: Set a Collection class
+	Step2: Set your own function to get data
+	Step3: Get the collection and call to filterOrder function above and Save this class
+2.  How  to  filter  by  an  attribute?  Filter  by  a  normal  field  ?  Sort  order  ?  Add  more  attribute  /  fields  to  collection  ? 
+
+	- Filter  by  an  attribute use:  addAttributeToFilter()
+	- Filter  by  a  normal  field use: addFieldToFilter()
+	- Sort order: 
+
+3.  How  to  get  data  from  request  (get/post)  in  correct  way  in  magento  2  ?  
+	- In a case of a controller that extends Magento\Framework\App\Action\Action, it is possible to get the request with the aid of $this->getRequest()->getPost().
+
+	- For a custom class, inject the request in the constructor:
+	
+	<?php 
+	namespace Namespace\Module\Something; 
+	class ClassName 
+	{ 
+		protected $request; 
+		public function __construct
+		( \Magento\Framework\App\Request\Http $request, 
+		....//rest of parameters here 
+		) 
+		{ 
+			$this->request = $request;
+		 ...//rest of constructor here 
+		} 
+		public function getPost() 
+		{ 
+			return $this->request->getPost(); 
+		} 
+	}
+
+4.  How  to  validate  form  data  with  JS  (client  side)  and  PHP  (server  side)  in  Magento  2?  
+
+5.  How  to  initiate  configuration  for  a  component  ?  
+
+6.  What  is  VirtualType  in di.xml? Can  we  use  a  data  provider  class  implementation  instead  of  VirtualType  ? 
