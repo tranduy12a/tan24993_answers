@@ -34,6 +34,47 @@
 
 4.  How  to  validate  form  data  with  JS  (client  side)  and  PHP  (server  side)  in  Magento  2?  
 
+	- step1: create a test form, the form is created as the attribute for validation.
+	- step2: accept javascript validation, please run the below script:
+		<script type="text/x-magento-init">
+		    {
+			"#custom-form": {
+			    "validation": {}
+			}
+		    }
+		</script>
+
+	or you can make that operation directly in .html like this:
+		<form data-mage-init='{"validation": {}}' class="form" id="custom-form" method="post" autocomplete="off">
+		or
+
+		<script type="text/javascript">
+		require([
+		    'jquery',
+		    'mage/mage'
+		], function($){
+		 
+		   var dataForm = $('#custom-form');
+		   dataForm.mage('validation', {});
+		 
+		});
+		</script>
+
 5.  How  to  initiate  configuration  for  a  component  ?  
 
+	Following step:
+	- Create the module directory.
+	- Create the required registration.php file
+	- Create the module.xml configuration file
+	- Create the default.xml layout configuration file
+	- Add new block declaration under the “content” container in the default.xml file
+	- Create new script.phtml file
+	- Add HTML markup with the data-bind attribute and scope name for the UI Component
+	- Add UI component configuration via text/x-magento-init script
+	- Create new JavaScript part of the UI Component in the component.js file
+	- Enable module by running bin/magento module:enable command
+	- Install module by running bin/magento setup:upgrade command
 6.  What  is  VirtualType  in di.xml? Can  we  use  a  data  provider  class  implementation  instead  of  VirtualType  ? 
+	- The virtualYype allows inserting different dependencies into the existing classes but not making any change to other classes. 
+	- Yes, we can use a  data  provider  class  implementation  instead  of  VirtualType.
+	
