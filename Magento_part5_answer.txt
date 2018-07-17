@@ -77,4 +77,20 @@
 6.  What  is  VirtualType  in di.xml? Can  we  use  a  data  provider  class  implementation  instead  of  VirtualType  ? 
 	- The virtualYype allows inserting different dependencies into the existing classes but not making any change to other classes. 
 	- Yes, we can use a  data  provider  class  implementation  instead  of  VirtualType.
-	
+7.  What  is  the  difference  between  custom  EAV  attributes  and  extension  attributes  ?
+
+Custom attributes are the attributes added to describe an entity, such as product attributes, customer attributes etc. These are a subset of EAV attributes.
+
+Extension attributes on the other hand are generally used for more complex data types such as adding additional complex data into an entity from a custom external table.
+
+Simply put, custom attributes conform to EAV standards whereas extension attributes are used for more complex data which custom attributes cannot handle.
+
+8.  How  to  customize  UI  component  template?  
+
+We can use HtmlContent component for adding a custom template to a UI fieldset
+
+9.  How  to  customize  a  JS  component  (any  JS  module  or  component  UI  JS)  ? 
+	9.1 Place the custom component source file in one of the following locations:
+		- Your theme JS files: <theme_dir>/web/js or <theme_dir>/<VendorName>_<ModuleName>/web/js. In this case the component is available in your theme and its child themes.
+		- Your module view JS files: <module_dir>/view/frontend/web/js. In this case the  component is available in all modules and themes (if your module is enabled).
+	9.2 Optionally, in the corresponding module or theme, create a requirejs-config.js configuration file, if it does not yet exist there and set path for your resource
